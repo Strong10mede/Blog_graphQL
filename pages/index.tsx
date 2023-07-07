@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import {} from "graphql";
+import { GraphQLClient } from "graphql-request";
 
 export default function Home() {
   return (
