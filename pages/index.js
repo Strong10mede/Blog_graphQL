@@ -11,7 +11,7 @@ const graphcms = new GraphQLClient(
 
 const QUERY = gql`
   {
-    blogPosts {
+    posts {
       id
       title
       datePublished
@@ -33,16 +33,16 @@ const QUERY = gql`
 `;
 
 export async function getStaticProps() {
-  const { blogPosts } = await graphcms.request(QUERY);
+  const { posts } = await graphcms.request(QUERY);
   return {
     props: {
-      blogPosts,
+      posts,
     },
     revalidate: 10,
   };
 }
 
-export default function Home({ blogPosts }) {
+export default function Home({ posts }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -52,7 +52,7 @@ export default function Home({ blogPosts }) {
       </Head>
 
       <main className={styles.main}>
-        {blogPosts.map((post, index) => {
+        {posts.map((post, index) => {
           return (
             <BlogCard
               title={post.title}
